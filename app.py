@@ -1,12 +1,15 @@
-from datetime import timedelta, datetime
+from datetime import timedelta
+
+from dotenv import load_dotenv
 
 from flask import Flask, request, session
-from flask_session import Session
-# from link_training import save_to_docx
 from mongoengine import *
 from twilio.rest import Client
 
+from flask_session import Session
+
 from gpt_functions import *
+
 from helpers import (
     insert_into_contacts,
     insert_into_message,
@@ -15,12 +18,9 @@ from models import (
     Contacts,
 )
 
-# from bot_send_mail import send_otp_message, send_new_user_message, send_forgot_pass_message
-# from tasks import later_process_files
-# from write_excel import search_yachts
 load_dotenv()
-
 openAI_key = os.getenv('OPENAI_KEY')
+
 client = OpenAI(api_key=openAI_key)
 
 ASSISTANT_ID = "asst_nPJUQiVUwjpuL8ZF6c4jPsS6"
