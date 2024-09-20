@@ -1,7 +1,5 @@
 from datetime import timedelta
 
-from dotenv import load_dotenv
-
 from flask import Flask, request, session
 from mongoengine import *
 from twilio.rest import Client
@@ -18,7 +16,9 @@ from models import (
     Contacts,
 )
 
+from dotenv import load_dotenv
 load_dotenv()
+
 openAI_key = os.getenv('OPENAI_KEY')
 
 client = OpenAI(api_key=openAI_key)
